@@ -71,13 +71,3 @@ logging only; the app does not claim automatic cloud synchronization.
 On a phone, open the public Riders page and use **Download app**. Android Chrome
 prompts for installation; iPhone Safari uses **Share → Add to Home Screen**.
 
-## Defense notes
-
-- **Web vs native:** one responsive codebase runs from HTTPS on GitHub Pages and needs no
-  separate Android or iOS installation.
-- **Full vs empty:** each dispatch tracks full tanks leaving and the empties expected from
-  the refill quantity.
-- **COD:** delivered COD orders increase unremitted cash; only an Admin or Cashier can close
-  the remittance after confirming the cash.
-- **Anti-fraud:** delivered orders require a 4-digit delivery proof PIN, while refill orders
-  with missing empties require a reason for dispatcher reconciliation.
