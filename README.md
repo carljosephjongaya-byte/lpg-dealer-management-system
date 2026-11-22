@@ -68,6 +68,9 @@ phone-friendly rider experience. The service worker caches the rider page, share
 JavaScript modules, manifest, and icons. Cached files provide read access and local
 logging only; the app does not claim automatic cloud synchronization.
 
+On a phone, open the public Riders page and use **Download app**. Android Chrome
+prompts for installation; iPhone Safari uses **Share → Add to Home Screen**.
+
 ## Defense notes
 
 - **Web vs native:** one responsive codebase runs from HTTPS on GitHub Pages and needs no

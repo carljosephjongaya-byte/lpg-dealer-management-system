@@ -94,6 +94,8 @@ a { color:inherit; }
 .rider-order-card { border:1px solid var(--border);border-radius:14px;background:white;padding:16px; }
 .rider-order-card .primary-action { width:100%;min-height:52px; }
 .deficit-alert { border:1px solid #f1b9b5;background:#fff5f4;border-radius:10px;padding:10px;color:#9f2d20;font-weight:700; }
+.install-help { position:fixed;left:16px;right:16px;bottom:84px;z-index:2200;background:#172554;color:white;border-radius:12px;padding:14px 44px 12px 14px;box-shadow:0 10px 30px rgba(15,23,42,.28); }
+.install-help p { margin:6px 0 0; }.install-help button { position:absolute;right:10px;top:8px;border:0;background:transparent;color:white;font-size:20px; }
 @media (max-width: 576px) {
   .rider-summary-grid { grid-template-columns:repeat(2,1fr); }
   .rider-table-wrap { display:none; }
