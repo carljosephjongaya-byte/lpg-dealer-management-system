@@ -10,7 +10,7 @@ export function collection(name) { return get(name) || []; }
 export function saveCollection(name, items) { set(name, items); }
 export function uid(prefix='id') { return prefix + '-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,7); }
 export function seedIfNeeded() {
-  if (get(KEYS.seed) === '1') return;
+  if (get(KEYS.seed) === '2') return;
   set(KEYS.users, [
     {id:'u-admin',name:'Maria Santos',username:'admin',password:'admin123',role:'admin'},
     {id:'u-cashier',name:'Juan Dela Cruz',username:'cashier',password:'cash123',role:'cashier'},
@@ -48,14 +48,14 @@ export function seedIfNeeded() {
   ]);
   const now = new Date();
   set(KEYS.orders, [
-    {id:'o1',customerId:'c1',items:[{variantId:'inv-1',qty:2}],address:'Blk 2 Lot 4 Mabini St.',paymentType:'paid',amount:2100,status:'delivered',riderId:'r2',createdAt:'2026-11-20T08:30:00',deliveredAt:'2026-11-20T10:15:00',emptiesReturned:2,cashCollected:2100},
-    {id:'o2',customerId:'c2',items:[{variantId:'inv-5',qty:3}],address:'12 M. Aguilar Ave.',paymentType:'cod',amount:3300,status:'delivered',riderId:'r1',createdAt:'2026-11-21T09:10:00',deliveredAt:'2026-11-21T11:30:00',emptiesReturned:3,cashCollected:3300},
-    {id:'o3',customerId:'c3',items:[{variantId:'inv-0',qty:1}],address:'456 Aniban Road',paymentType:'cod',amount:650,status:'out_for_delivery',riderId:'r1',createdAt:'2026-11-22T08:20:00',deliveredAt:'',emptiesReturned:0,cashCollected:0},
-    {id:'o4',customerId:'c4',items:[{variantId:'inv-3',qty:1},{variantId:'inv-7',qty:1}],address:'8 Sampaguita St.',paymentType:'paid',amount:5200,status:'assigned',riderId:'r3',createdAt:'2026-11-22T09:00:00',deliveredAt:'',emptiesReturned:0,cashCollected:0},
-    {id:'o5',customerId:'c5',items:[{variantId:'inv-1',qty:1}],address:'77 Rizal Avenue',paymentType:'cod',amount:1050,status:'pending',riderId:'',createdAt:'2026-11-22T09:20:00',deliveredAt:'',emptiesReturned:0,cashCollected:0},
-    {id:'o6',customerId:'c2',items:[{variantId:'inv-5',qty:2}],address:'12 M. Aguilar Ave.',paymentType:'paid',amount:2200,status:'cancelled',riderId:'',createdAt:'2026-11-19T13:00:00',deliveredAt:'',emptiesReturned:0,cashCollected:0},
-    {id:'o7',customerId:'c1',items:[{variantId:'inv-1',qty:1}],address:'Blk 2 Lot 4 Mabini St.',paymentType:'cod',amount:1050,status:'delivered',riderId:'r4',createdAt:'2026-11-18T08:45:00',deliveredAt:'2026-11-18T10:10:00',emptiesReturned:1,cashCollected:1000},
-    {id:'o8',customerId:'c3',items:[{variantId:'inv-4',qty:2}],address:'456 Aniban Road',paymentType:'paid',amount:1300,status:'delivered',riderId:'r2',createdAt:'2026-11-17T14:00:00',deliveredAt:'2026-11-17T15:30:00',emptiesReturned:2,cashCollected:1300}
+    {id:'o1',customerId:'c1',items:[{variantId:'inv-1',qty:2}],address:'Blk 2 Lot 4 Mabini St.',paymentType:'paid',paymentStatus:'paid',transactionType:'refill_swap',amount:2100,status:'delivered',riderId:'r2',createdAt:'2026-11-20T08:30:00',deliveredAt:'2026-11-20T10:15:00',emptiesReturned:2,cashCollected:2100,proofPin:'4821',emptyDeficitReason:''},
+    {id:'o2',customerId:'c2',items:[{variantId:'inv-5',qty:3}],address:'12 M. Aguilar Ave.',paymentType:'cod',paymentStatus:'remitted',transactionType:'refill_swap',amount:3300,status:'delivered',riderId:'r1',createdAt:'2026-11-21T09:10:00',deliveredAt:'2026-11-21T11:30:00',emptiesReturned:3,cashCollected:3300,proofPin:'7193',emptyDeficitReason:''},
+    {id:'o3',customerId:'c3',items:[{variantId:'inv-0',qty:1}],address:'456 Aniban Road',paymentType:'cod',paymentStatus:'unremitted',transactionType:'refill_swap',amount:650,status:'out_for_delivery',riderId:'r1',createdAt:'2026-11-22T08:20:00',deliveredAt:'',emptiesReturned:0,cashCollected:0,proofPin:'',emptyDeficitReason:''},
+    {id:'o4',customerId:'c4',items:[{variantId:'inv-3',qty:1},{variantId:'inv-7',qty:1}],address:'8 Sampaguita St.',paymentType:'paid',paymentStatus:'paid',transactionType:'new_tank',amount:5200,status:'assigned',riderId:'r3',createdAt:'2026-11-22T09:00:00',deliveredAt:'',emptiesReturned:0,cashCollected:0,proofPin:'',emptyDeficitReason:''},
+    {id:'o5',customerId:'c5',items:[{variantId:'inv-1',qty:1}],address:'77 Rizal Avenue',paymentType:'cod',paymentStatus:'unremitted',transactionType:'refill_swap',amount:1050,status:'pending',riderId:'',createdAt:'2026-11-22T09:20:00',deliveredAt:'',emptiesReturned:0,cashCollected:0,proofPin:'',emptyDeficitReason:''},
+    {id:'o6',customerId:'c2',items:[{variantId:'inv-5',qty:2}],address:'12 M. Aguilar Ave.',paymentType:'paid',paymentStatus:'paid',transactionType:'refill_swap',amount:2200,status:'cancelled',riderId:'',createdAt:'2026-11-19T13:00:00',deliveredAt:'',emptiesReturned:0,cashCollected:0,proofPin:'',emptyDeficitReason:''},
+    {id:'o7',customerId:'c1',items:[{variantId:'inv-1',qty:1}],address:'Blk 2 Lot 4 Mabini St.',paymentType:'cod',paymentStatus:'unremitted',transactionType:'refill_swap',amount:1050,status:'delivered',riderId:'r4',createdAt:'2026-11-18T08:45:00',deliveredAt:'2026-11-18T10:10:00',emptiesReturned:1,cashCollected:1000,proofPin:'2604',emptyDeficitReason:''},
+    {id:'o8',customerId:'c3',items:[{variantId:'inv-4',qty:2}],address:'456 Aniban Road',paymentType:'paid',paymentStatus:'paid',transactionType:'new_tank',amount:1300,status:'delivered',riderId:'r2',createdAt:'2026-11-17T14:00:00',deliveredAt:'2026-11-17T15:30:00',emptiesReturned:2,cashCollected:1300,proofPin:'1357',emptyDeficitReason:''}
   ]);
   set(KEYS.inventoryTxns, [
     {id:'tx1',timestamp:'2026-11-20T08:00:00',type:'restock',variantId:'inv-1',qty:10,userId:'u-admin',notes:'Supplier restock'},
@@ -73,5 +73,5 @@ export function seedIfNeeded() {
     {id:'a2',timestamp:'2026-11-22T09:00:00',userId:'u-admin',action:'Assigned',entity:'Order',entityId:'o4',details:'Assigned to Jasper Cruz'},
     {id:'a3',timestamp:'2026-11-21T11:40:00',userId:'u-cashier',action:'Recorded',entity:'Inventory',entityId:'inv-5',details:'Rider return of 3 empty shells'}
   ]);
-  set(KEYS.seed, '1');
+  set(KEYS.seed, '2');
 }
